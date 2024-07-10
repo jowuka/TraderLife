@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trader_life/helper.dart';
 
 class InventoryDialog extends StatelessWidget {
   const InventoryDialog({super.key});
@@ -11,8 +12,8 @@ class InventoryDialog extends StatelessWidget {
       ),
       child: Container(
         padding: const EdgeInsets.all(16.0),
-        height: 300,
-        width: 500,
+        height: heightInventory,
+        width: widthInventory,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

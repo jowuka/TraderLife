@@ -11,12 +11,12 @@ class MineButton extends StatelessWidget {
       child: GestureDetector(
         child: Image.asset("assets/images/miningbutton.png"),
         onTap: () {
-            showDialog(
+             showDialog(
               context: context,
               builder: (BuildContext context) {
-                return InventoryDialog();
+                return const InventoryDialog();
               },
-            );
+            ); 
         },
       ),
     );
