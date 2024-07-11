@@ -1,17 +1,24 @@
+import 'package:device_screen_size/device_screen_size.dart';
 import 'package:flutter/material.dart';
 import 'package:trader_life/helper.dart';
 
 
 class InventoryDialog extends StatelessWidget {
   const InventoryDialog({super.key});
+
+
   @override
   Widget build(BuildContext context) {
+      double screenHeight = DeviceScreenSize.screenHeightInPercentage(context,
+                  percentage: 0.7);                                                         // Screen Width & Height They should be change on IOS & WINDOWS & CHROME
+      double screenWidth = DeviceScreenSize.screenWidthInPercentage(context,
+                  percentage: 0.7);
     return Dialog(
 
       child: Container(
         padding: const EdgeInsets.all(16.0),
-        height: heightInventory,
-        width: widthInventory,
+          height: screenHeight,
+          width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

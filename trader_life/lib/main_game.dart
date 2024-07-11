@@ -4,6 +4,8 @@ import 'package:trader_life/widgets/buttons/mine_button.dart';
 const String _miningButtonImagePath = "assets/images/miningbutton.png";
 const String _walletButtonImagePath = "assets/images/walletbutton.png";
 const String _workButtonImagePath = "assets/images/workbutton.png";
+const String _backgroundImagePath = "assets/images/background.webp";
+
 
 class Game extends StatefulWidget {
   const Game({super.key});
@@ -20,7 +22,7 @@ class _GameState extends State<Game> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/background.webp"),
+                image: AssetImage(_backgroundImagePath),
                 fit: BoxFit.cover)),
         child: const Padding(
           padding: EdgeInsets.all(8.0),
