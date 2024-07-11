@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:trader_life/helper.dart';
 import 'package:trader_life/inventory.dart';
 
 class MineButton extends StatelessWidget {
-  const MineButton({super.key});
+  const MineButton({super.key, required this.imagePath});
+
+  final String imagePath;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56,
-      width: 56,
+      width: widthLeftColumn,
       child: GestureDetector(
-        child: Image.asset("assets/images/miningbutton.png"),
+        child: Image.asset(imagePath),
         onTap: () {
              showDialog(
               context: context,

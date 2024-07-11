@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:trader_life/helper.dart';
 
+
 class InventoryDialog extends StatelessWidget {
   const InventoryDialog({super.key});
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: Colors.grey.shade400,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
-      ),
+
       child: Container(
         padding: const EdgeInsets.all(16.0),
         height: heightInventory,
@@ -21,7 +19,7 @@ class InventoryDialog extends StatelessWidget {
               children: [
                 const Text(
                   'Mining',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 const Spacer(),
                 GestureDetector(
