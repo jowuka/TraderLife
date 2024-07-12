@@ -16,34 +16,42 @@ class InventoryDialog extends StatelessWidget {
     return Dialog(
 
       child: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: const Color.fromARGB(255, 157,165,189)),
+        
         padding: const EdgeInsets.all(16.0),
           height: screenHeight,
           width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                const Text(
-                  'Mining',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: const Color.fromARGB(255, 58,76,122)),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Mining',
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    const Spacer(),
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: const Icon(Icons.close),
+                    ),
+                  ],
                 ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: const Icon(Icons.close),
-                ),
-              ],
+              ),
             ),
             const SizedBox(height: 16),
             Expanded(
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
+                  crossAxisCount: 15,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),
-                itemCount: 20, // Number of inventory items
+                itemCount: 10,                    // Number of inventory items
                 itemBuilder: (context, index) {
                   return InventoryItem(index: index);
                 },
