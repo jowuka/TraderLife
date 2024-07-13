@@ -1,6 +1,5 @@
 import 'package:device_screen_size/device_screen_size.dart';
 import 'package:flutter/material.dart';
-import 'package:trader_life/helper.dart';
 
 
 class InventoryDialog extends StatelessWidget {

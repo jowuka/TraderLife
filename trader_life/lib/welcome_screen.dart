@@ -5,7 +5,6 @@ const WelcomeText = "Satoshi Nakamato published the bitcoin, our journey to the 
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

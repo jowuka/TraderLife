@@ -1,13 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trader_life/main_game.dart';
 import 'package:trader_life/welcome_screen.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();          // Guarantee next methods
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky, overlays: []);    // Hide Top & Bottom Bar
-  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight])        // Fix phone to landscape / change for ios
-      .then((_) {
-    runApp(const MaterialApp(
-    home: WelcomeScreen()));
-  });
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Guarantee next methods
+
+  // Hide Top & Bottom Bar
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky,
+      overlays: []);
+
+  // Fix phone to landscape / change for ios
+  await SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isAppFirstTime = prefs.getBool('isAppFirstTime') ?? true;
+  // prefs.clear();   Delete local data
+  if (isAppFirstTime) {
+    
+    await prefs.setBool('isAppFirstTime', false);
+  }
+
+  runApp(MyApp(isAppFirstTime: isAppFirstTime));
+}
+
+class MyApp extends StatelessWidget {
+  final bool isAppFirstTime;
+
+  const MyApp({required this.isAppFirstTime});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: isAppFirstTime
+          ? const WelcomeScreen()
+          : const Game(), // Navigate to the appropriate screen
+    );
+  }
 }
