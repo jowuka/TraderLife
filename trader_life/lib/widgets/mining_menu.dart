@@ -1,30 +1,31 @@
-import 'package:device_screen_size/device_screen_size.dart';
 import 'package:flutter/material.dart';
-
+import 'package:device_screen_size/device_screen_size.dart';
+import 'package:trader_life/widgets/inventory_item.dart';
 
 class MiningMenu extends StatelessWidget {
   const MiningMenu({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-      double screenHeight = DeviceScreenSize.screenHeightInPercentage(context,
-                  percentage: 0.7);                                                         // Screen Width & Height They should be change on IOS & WINDOWS & CHROME
-      double screenWidth = DeviceScreenSize.screenWidthInPercentage(context,
-                  percentage: 0.7);
+    double screenHeight = DeviceScreenSize.screenHeightInPercentage(context, percentage: 0.7);
+    double screenWidth = DeviceScreenSize.screenWidthInPercentage(context, percentage: 0.7);
     return Dialog(
-
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: const Color.fromARGB(255, 157,165,189)),
-        
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          color: const Color.fromARGB(255, 157, 165, 189),
+        ),
         padding: const EdgeInsets.all(16.0),
-          height: screenHeight,
-          width: screenWidth,
+        height: screenHeight,
+        width: screenWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0), color: const Color.fromARGB(255, 58,76,122)),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.0),
+                color: const Color.fromARGB(255, 58, 76, 122),
+              ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
@@ -43,38 +44,10 @@ class MiningMenu extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            InventoryItem()
-            
+            const InventoryItemWidget(),
           ],
         ),
       ),
     );
-  }
-}
-
-class InventoryItem extends StatelessWidget {
-  const InventoryItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 7),
-    child: SizedBox(
-      height: DeviceScreenSize.screenHeightInPercentage(context,
-                    percentage: 0.109),
-      child: const Row(
-          
-          children: [
-            Column(
-              children: [
-                Text("Model"),
-                Icon(Icons.graphic_eq)
-              ],
-            ),
-
-          ],
-        ),
-    ),
-  );
   }
 }
