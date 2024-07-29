@@ -14,14 +14,10 @@ Future<void> main() async {
   // Fix phone to landscape / change for ios
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
-
+  
   SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isAppFirstTime = prefs.getBool('isAppFirstTime') ?? true;
-  // prefs.clear();   Delete local data
-  if (isAppFirstTime) {
-    
-    await prefs.setBool('isAppFirstTime', false);
-  }
+
 
   runApp(MyApp(isAppFirstTime: isAppFirstTime));
 }

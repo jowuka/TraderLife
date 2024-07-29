@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:device_screen_size/device_screen_size.dart';
-import 'package:trader_life/widgets/inventory_item.dart';
+import 'package:trader_life/widgets/graphic_card_item.dart';
 
 class MiningMenu extends StatelessWidget {
   const MiningMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = DeviceScreenSize.screenHeightInPercentage(context, percentage: 0.7);
-    double screenWidth = DeviceScreenSize.screenWidthInPercentage(context, percentage: 0.7);
+    double screenHeight = DeviceScreenSize.screenHeightInPercentage(context, percentage: 0.83);
+    double screenWidth = DeviceScreenSize.screenWidthInPercentage(context, percentage: 0.84);
     return Dialog(
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
-          color: const Color.fromARGB(255, 157, 165, 189),
+          color: const Color.fromARGB(255,33, 33,33),
         ),
         padding: const EdgeInsets.all(16.0),
         height: screenHeight,
@@ -24,7 +24,7 @@ class MiningMenu extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
-                color: const Color.fromARGB(255, 58, 76, 122),
+                color: const Color.fromARGB(255, 104,104,104),
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -44,7 +44,7 @@ class MiningMenu extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            const InventoryItemWidget(),
+            const GraphicCardItem(),
           ],
         ),
       ),
