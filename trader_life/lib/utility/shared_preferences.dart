@@ -1,12 +1,14 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trader_life/models/model_graphic_card.dart';
+import 'package:trader_life/data/data_graphic_card.dart';
+
+const int totalGraphicCards = 3;
 
 class SharedPreferencesUtil {
   static SharedPreferences? _prefs;
 
   // Keys for SharedPreferences
   static const String _assignedValueKey = 'assignedValue';
-  static const String _exampleKey = 'exampleKey';
+  static const String graphicCardData = 'idGraphicCard';
   static const String _isAppFirstTimeKey = 'isAppFirstTime';
 
   static const String assignedValueOfGraphicCard = "AssignedValueOfGraphicCard";
@@ -17,12 +19,25 @@ class SharedPreferencesUtil {
     bool isAppFirstTime = _prefs?.getBool(_isAppFirstTimeKey) ?? true;
 
     if (isAppFirstTime) {
-      // Perform first-time initialization
       await _prefs?.setBool(_isAppFirstTimeKey, false);
-      _prefs?.setString(assignedValueOfGraphicCard, "NULL");
+      for(int i = 0; i < totalGraphicCards; i++) {
+        setGraphicCardDataFirstTime(i);
+      }
+      _prefs?.setString(assignedValueOfGraphicCard, "X");
     }
   }
+  static Future<void> setGraphicCardDataFirstTime(int idGraphicCard) async {
+    await _prefs?.setString("$GraphicCardData$idGraphicCard", "X;0");
+  }
 
+  static Future<void> setGraphicCardAssignedValue(int idGraphicCard, String value) async { 
+    String? temp =  _prefs?.getString("$GraphicCardData$idGraphicCard")?.split(";").last;
+    await _prefs?.setString("$GraphicCardData$idGraphicCard", "$value;$temp");
+  }
+  
+  static String? getGraphicCardData(int idGraphicCard) {
+    return _prefs?.getString("$GraphicCardData$idGraphicCard");
+  }
   // Setter and Getter for AssignedValue
   static Future<void> setAssignedValue(String value) async {
     await _prefs?.setString(_assignedValueKey, value);
@@ -33,20 +48,9 @@ class SharedPreferencesUtil {
   }
 
   // Example: Setter and Getter for another variable
-  static Future<void> setExampleValue(String value) async {
-    await _prefs?.setString(_exampleKey, value);
-  }
-
-  static String? getExampleValue() {
-    return _prefs?.getString(_exampleKey);
-  }
 
   static String? getAssignedValueOfGraphicCard() {
-    if (assignedValueOfGraphicCard != null) {
       return _prefs?.getString(assignedValueOfGraphicCard);
-    } else {
-      return "X";
-    }
   }
   // Add more setter and getter methods for other variables as needed
 }

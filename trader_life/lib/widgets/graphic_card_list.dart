@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trader_life/models/model_graphic_card.dart';
+import 'package:trader_life/utility/shared_preferences.dart';
 import 'package:trader_life/widgets/buttons/assign_card_button.dart';
 import 'package:trader_life/widgets/configured_text.dart';
 
@@ -41,7 +42,8 @@ class _GraphicCardListState extends State<GraphicCardList> {
     if (newValue != null) {
       setState(() {
         _currentAssignedValue = newValue;
-        widget.graphicCard.assignedValue = newValue.toString().split('.').last; // Update the graphic card's assigned value
+        SharedPreferencesUtil.setGraphicCardAssignedValue(0, newValue.toString().split(".").last);
+        // widget.graphicCard.assignedValue = newValue.toString().split('.').last; // Update the graphic card's assigned value
       });
     }
   }

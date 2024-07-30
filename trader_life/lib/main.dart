@@ -16,16 +16,14 @@ Future<void> main() async {
       [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
   
   SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isAppFirstTime = prefs.getBool('isAppFirstTime') ?? true;
 
-
-  runApp(MyApp(isAppFirstTime: isAppFirstTime));
+  runApp(MyApp(isAppFirstTime: prefs.getBool('isAppFirstTime') ?? true));
 }
 
 class MyApp extends StatelessWidget {
   final bool isAppFirstTime;
 
-  const MyApp({required this.isAppFirstTime});
+  const MyApp({required this.isAppFirstTime, super.key});
 
   @override
   Widget build(BuildContext context) {

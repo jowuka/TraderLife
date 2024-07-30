@@ -15,11 +15,13 @@ class GraphicCard {
   double power;
   String assignedValue;
   double price;
+  int userAmount;
   GraphicCard(
       {required this.id,
       required this.model,
       required this.power,
       required this.imageURL,
       required this.assignedValue,
-      required this.price});
+      required this.price,
+      required this.userAmount});
 }
