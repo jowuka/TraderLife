@@ -7,11 +7,10 @@ class SharedPreferencesUtil {
   static SharedPreferences? _prefs;
 
   // Keys for SharedPreferences
-  static const String _assignedValueKey = 'assignedValue';
-  static const String graphicCardData = 'idGraphicCard';
-  static const String _isAppFirstTimeKey = 'isAppFirstTime';
 
-  static const String assignedValueOfGraphicCard = "AssignedValueOfGraphicCard";
+  static const String assignedToWhat = 'idGraphicCard';
+  static const String _isAppFirstTimeKey = 'isAppFirstTime';
+  static const String howManyGraphicCard = "AmountGraphicCard";
 
   // Initialization
   static Future<void> init() async {
@@ -23,11 +22,14 @@ class SharedPreferencesUtil {
       for(int i = 0; i < totalGraphicCards; i++) {
         setGraphicCardDataFirstTime(i);
       }
-      _prefs?.setString(assignedValueOfGraphicCard, "X");
     }
   }
   static Future<void> setGraphicCardDataFirstTime(int idGraphicCard) async {
-    await _prefs?.setString("$GraphicCardData$idGraphicCard", "X;0");
+    await _prefs?.setString("$assignedToWhat$idGraphicCard", "X");
+    await _prefs?.setInt("{$howManyGraphicCard$idGraphicCard}", 0);
+  }
+  static Future<void> setAssignedValue(int id, String value) async {
+    await
   }
 
   static Future<void> setGraphicCardAssignedValue(int idGraphicCard, String value) async { 
@@ -36,21 +38,12 @@ class SharedPreferencesUtil {
   }
   
   static String? getGraphicCardData(int idGraphicCard) {
-    return _prefs?.getString("$GraphicCardData$idGraphicCard");
-  }
-  // Setter and Getter for AssignedValue
-  static Future<void> setAssignedValue(String value) async {
-    await _prefs?.setString(_assignedValueKey, value);
-  }
-
-  static String? getAssignedValue() {
-    return _prefs?.getString(_assignedValueKey);
+    if(_prefs?.getString("$GraphicCardData$idGraphicCard") != null) {
+      return _prefs?.getString("$GraphicCardData$idGraphicCard");
+    } else {
+      return "X";
+    }
   }
 
-  // Example: Setter and Getter for another variable
 
-  static String? getAssignedValueOfGraphicCard() {
-      return _prefs?.getString(assignedValueOfGraphicCard);
-  }
-  // Add more setter and getter methods for other variables as needed
 }
