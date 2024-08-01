@@ -2,7 +2,7 @@
 
 
 enum AssignedValue {
-  X,
+  NULL,
   BTC,
   ETH,
   SOL,

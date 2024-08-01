@@ -64,9 +64,33 @@ flutter:
     - assets/images/miningbutton.png
     - assets/images/walletbutton.png
     - assets/images/workbutton.png
-    - assets/images/T1_L1.png
-    - assets/images/T1_L2.png
-    - assets/images/T1_L3.png
+    - assets/images/buybutton.png
+    - assets/images/GraphicCards/Tier1/T1_L1.png
+    - assets/images/GraphicCards/Tier1/T1_L2.png
+    - assets/images/GraphicCards/Tier1/T1_L3.png
+    - assets/images/GraphicCards/Tier2/Tier2_L1.png
+    - assets/images/GraphicCards/Tier2/Tier2_L2.png
+    - assets/images/GraphicCards/Tier2/Tier2_L3.png
+    - assets/images/GraphicCards/Tier3/Tier3_l1.png
+    - assets/images/GraphicCards/Tier3/Tier3_l2.png
+    - assets/images/GraphicCards/Tier3/Tier3_l3.png
+    - assets/images/GraphicCards/Tier3/Tier3_l4.png
+    - assets/images/GraphicCards/Tier4/Tier4_l1.png
+    - assets/images/GraphicCards/Tier4/Tier4_l2.png
+    - assets/images/GraphicCards/Tier5/Tier5_l1.png
+    - assets/images/GraphicCards/Tier5/Tier5_l2.png
+    - assets/images/GraphicCards/Tier5/Tier5_l3.png
+    - assets/images/GraphicCards/Tier5/Tier5_l4.png
+    - assets/images/GraphicCards/Tier5/Tier5_l5.png
+    - assets/images/GraphicCards/Tier5/Tier5_l6.png
+    - assets/images/GraphicCards/Tier5/Tier5_l7.png
+    - assets/images/GraphicCards/Tier5/Tier5_l8.png
+    - assets/images/GraphicCards/Tier5/Tier5_l9.png
+    - assets/images/GraphicCards/Tier6/Tier6_l1.png
+    - assets/images/GraphicCards/Tier6/Tier6_l2.png
+    - assets/images/GraphicCards/Tier6/Tier6_l3.png
+    - assets/images/GraphicCards/Tier6/Tier6_l4.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
