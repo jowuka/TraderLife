@@ -18,7 +18,7 @@ Future<void> main() async {
       [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  SharedPreferencesUtil.init();
+  await SharedPreferencesUtil.init();
   TimerService().startTimer();
   runApp(MyApp(isAppFirstTime: prefs.getBool('isAppFirstTime') ?? true));
 }
