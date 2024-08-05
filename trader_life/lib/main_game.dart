@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:trader_life/models/user_model.dart';
-import 'package:trader_life/utility/shared_preferences.dart';
 import 'package:trader_life/widgets/buttons/mine_button.dart';
 import 'package:trader_life/widgets/menu/mining_menu.dart';
+import 'package:trader_life/widgets/menu/wallet_menu.dart';
 import 'package:trader_life/widgets/top_bar.dart';
 
 const String _miningButtonImagePath = "assets/images/miningbutton.png";
@@ -11,27 +11,14 @@ const String _workButtonImagePath = "assets/images/workbutton.png";
 const String _backgroundImagePath = "assets/images/background.webp";
 
 class Game extends StatefulWidget {
-  const Game({super.key});
+  const Game({super.key, required this.user});
+  final UserModel user;
 
   @override
   State<Game> createState() => _GameState();
 }
 
 class _GameState extends State<Game> {
-  UserModel? user;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadUserData();
-  }
-
-  Future<void> _loadUserData() async {
-    UserModel userData = await SharedPreferencesUtil.getUserData();
-    setState(() {
-      user = userData;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,19 +46,17 @@ class _GameState extends State<Game> {
                 SizedBox(height: 16),
                 MineButton(
                   imagePath: _workButtonImagePath,
-                  // You can pass another widget or null here
-                  menuReturn: null,
+                  menuReturn: InventoryDialog(),
                 ),
                 SizedBox(height: 16),
                 MineButton(
                   imagePath: _walletButtonImagePath,
-                  // You can pass another widget or null here
-                  menuReturn: null,
+                  menuReturn: InventoryDialog(),
                 ),
               ],
             ),
           ),
-          if (user != null) TopBar(user: user!),
+          TopBar(user: widget.user),
         ],
       ),
     );

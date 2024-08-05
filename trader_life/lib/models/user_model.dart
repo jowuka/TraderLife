@@ -17,7 +17,6 @@ class UserModel {
     }
   }
 
-  // Method to add cash
   void addCash(double amount) {
     userCash += amount;
   }
@@ -30,9 +29,8 @@ class UserModel {
     userCash -= amount;
   }
 
-  // Method to calculate experience required for the next level
   int experienceRequiredForNextLevel() {
-    return userLevel * 1000; // Example: next level requires 100 * current level experience points
+    return userLevel * 1000; 
   }
 
 }

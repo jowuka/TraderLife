@@ -7,6 +7,7 @@ class TimerService {
 
   static final TimerService _instance = TimerService._privateConstructor();
   UserModel? user;
+
   factory TimerService() {
     return _instance;
   }
@@ -36,10 +37,10 @@ class TimerService {
       int count = prefs.getInt('count_$graphicCard') ?? 0;
       print('Count for $graphicCard: $count'); // Debugging count retrieval
       if (count > 0) {
-        // Perform calculations for this graphic card
+        user?.addExperience(10);
         double calculatedValue = count * 1.5; // Example calculation
         print('Calculated Value for $graphicCard: $calculatedValue');
-        user!.userExperience++;
+        user?.userExperience++;
       }
     }
   }
