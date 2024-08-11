@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:trader_life/models/model_graphic_card.dart';
+import 'package:trader_life/models/user_model.dart';
 import 'package:trader_life/utility/shared_preferences.dart';
 import 'package:trader_life/widgets/buttons/assign_card_button.dart';
 import 'package:trader_life/widgets/buttons/mining_buy_button.dart';
 import 'package:trader_life/widgets/configured_text.dart';
-
 class GraphicCardList extends StatefulWidget {
   final GraphicCard graphicCard;
 
@@ -67,8 +67,13 @@ class _GraphicCardListState extends State<GraphicCardList> {
   }
 
   void addGraphicCard() {
-    SharedPreferencesUtil.addUserGraphicCard(widget.graphicCard.id);
-    checkUserGraphicCard();
+    if(UserModel.spendCash(widget.graphicCard.price)) {
+      SharedPreferencesUtil.addUserGraphicCard(widget.graphicCard.id);
+      checkUserGraphicCard();
+    }
+    else {
+      print('no money no life');
+    }
   }
 
   @override

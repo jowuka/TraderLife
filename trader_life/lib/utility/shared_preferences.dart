@@ -12,7 +12,9 @@ class SharedPreferencesUtil {
   static const String assignedToWhat = 'idGraphicCard';
   static const String _isAppFirstTimeKey = 'isAppFirstTime';
   static const String howManyGraphicCard = "AmountGraphicCard";
-
+  static const String userCash = 'userCash';
+  static const String userLevel = 'userLevel';
+  static const String userExperience = 'userExperience';
   // Initialization
   static Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
@@ -21,9 +23,35 @@ class SharedPreferencesUtil {
       await _prefs?.setBool(_isAppFirstTimeKey, false);
       for (int i = 0; i < totalGraphicCards; i++) {
         setGraphicCardDataFirstTime(i);
+        setUserFirstTime();
       }
     }
   }
+   static Future<void> setUserFirstTime() async {
+    _prefs = await SharedPreferences.getInstance();
+    await _prefs?.setInt(userCash, 0);
+    await _prefs?.setInt(userLevel, 1);
+    await _prefs?.setInt(userExperience, 0);
+  }
+   static getUserCash() {
+    return _prefs!.getInt(userCash);
+  }
+   static getUserLevel() {
+    return _prefs!.getInt(userLevel);
+  }
+   static getUserExperience() {
+    return _prefs!.getInt(userExperience);
+  }
+    static Future<void> setUserCash(int value) async {
+    await _prefs?.setInt(userCash, value);
+  }
+    static Future<void> setUserLevel(int value) async {
+    await _prefs?.setInt(userLevel, value);
+  }
+    static Future<void> setUserExperience(int value) async {
+    await _prefs?.setInt(userExperience, value);
+  }
+
   static Future<bool> userHasGraphicCard(int id) async {
     final userGraphicCards = _prefs!.getInt("{$howManyGraphicCard$id}");
     return userGraphicCards! > 0;

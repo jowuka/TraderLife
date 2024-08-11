@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:trader_life/models/user_model.dart';
+UserModel user = UserModel();
 class TimerService {
   TimerService._privateConstructor();
 
@@ -36,6 +37,7 @@ class TimerService {
         double calculatedValue = count * 1.5; // Example calculation
         print('Calculated Value for $graphicCard: $calculatedValue');
         // TODO: Add your calculation logic here
+            user.addCash(10);
       }
     }
   }

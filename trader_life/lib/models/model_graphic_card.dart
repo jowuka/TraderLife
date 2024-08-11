@@ -14,7 +14,7 @@ class GraphicCard {
   String imageURL;
   double power;
   String assignedValue;
-  double price;
+  int price;
   int userAmount;
   GraphicCard(
       {required this.id,

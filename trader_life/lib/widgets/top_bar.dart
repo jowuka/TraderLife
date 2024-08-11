@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trader_life/models/user_model.dart';
+import 'package:trader_life/utility/shared_preferences.dart';
 import 'package:trader_life/widgets/configured_text.dart';
 
 class TopBar extends StatefulWidget {
@@ -14,8 +17,14 @@ class _TopBar extends State<TopBar> {
       width: double.infinity,
       height: 15,
       color: Colors.red,
-      child:const Row(
-        
+      child: Row(
+        children: [
+          ConfiguredText(text: '${UserModel.userCash}'),
+          const SizedBox(
+            width: 50,
+          ),
+          ConfiguredText(text: '${UserModel.userLevel}'),
+        ],
       ),
     );
   }
