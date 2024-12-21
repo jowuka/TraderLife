@@ -7,7 +7,7 @@ class MiningBuyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double buttonHeight = DeviceScreenSize.screenHeightInPercentage(context, percentage: 0.07);
+    double buttonHeight = DeviceScreenSize.screenHeightInPercentage(context, percentage: 0.055);
     double buttonWidth = DeviceScreenSize.screenWidthInPercentage(context, percentage: 0.088);
     return GestureDetector(
       onTap: () {

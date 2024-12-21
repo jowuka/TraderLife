@@ -15,6 +15,9 @@ class SharedPreferencesUtil {
   static const String userCash = 'userCash';
   static const String userLevel = 'userLevel';
   static const String userExperience = 'userExperience';
+  static const String userBTC = 'userBTC';
+  static const String userETH = 'userETH';
+  static const String userSOL = 'userSOL';
   // Initialization
   static Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
@@ -27,14 +30,20 @@ class SharedPreferencesUtil {
       }
     }
   }
+  double getUserCoinBalance(String nameCurrency){
+    return _prefs!.getDouble(nameCurrency) ?? 0;
+  }
    static Future<void> setUserFirstTime() async {
     _prefs = await SharedPreferences.getInstance();
-    await _prefs?.setInt(userCash, 0);
+    await _prefs?.setDouble(userCash, 0.0);
     await _prefs?.setInt(userLevel, 1);
     await _prefs?.setInt(userExperience, 0);
+    await _prefs?.setDouble(userBTC, 0.0);
+    await _prefs?.setDouble(userETH, 0.0);
+    await _prefs?.setDouble(userSOL, 0.0);
   }
    static getUserCash() {
-    return _prefs!.getInt(userCash);
+    return _prefs!.getDouble(userCash);
   }
    static getUserLevel() {
     return _prefs!.getInt(userLevel);
@@ -42,8 +51,8 @@ class SharedPreferencesUtil {
    static getUserExperience() {
     return _prefs!.getInt(userExperience);
   }
-    static Future<void> setUserCash(int value) async {
-    await _prefs?.setInt(userCash, value);
+    static Future<void> setUserCash(double value) async {
+    await _prefs?.setDouble(userCash, value);
   }
     static Future<void> setUserLevel(int value) async {
     await _prefs?.setInt(userLevel, value);

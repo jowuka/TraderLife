@@ -1,26 +1,52 @@
 import 'dart:collection';
 
-import 'package:trader_life/models/currency_model.dart';
-
 class UserWallet {
   final HashMap<String, UserCurrency> currencies = HashMap<String, UserCurrency>();
+  static const List<String> initialCoins = ['BTC', 'ETH', 'SOL'];
 
   UserWallet() {
-    // Initialize with some default currencies
-    currencies['BTC'] = UserCurrency(currencyName: 'BTC', amount: 0.0);
-    currencies['ETH'] = UserCurrency(currencyName: 'ETH', amount: 0.0);
-    // Add more currencies as needed
+    for (var coin in initialCoins) {
+      currencies[coin] = UserCurrency(currencyName: coin, amount: 0.0, productionRatePerSecond: 0.0);
+    }
   }
 
   void updateCurrency(String currencyName, double amount) {
     if (currencies.containsKey(currencyName)) {
-      currencies[currencyName]!.amount += amount;
+      currencies[currencyName]?.updateAmount(amount);
     } else {
-      currencies[currencyName] = UserCurrency(currencyName: currencyName, amount: amount);
+      currencies[currencyName] = UserCurrency(currencyName: currencyName, amount: amount, productionRatePerSecond: 0.0);
     }
   }
 
-  UserCurrency? getCurrency(String currencyName) {
-    return currencies[currencyName];
+  void updateProductionRate(String currencyName, double rate) {
+    if (currencies.containsKey(currencyName)) {
+      currencies[currencyName]?.updateProductionRate(rate);
+    } else {
+      currencies[currencyName] = UserCurrency(currencyName: currencyName, amount: 0.0, productionRatePerSecond: rate);
+    }
+  }
+
+  double getCurrencyAmount(String currencyName) {
+    return currencies[currencyName]?.amount ?? 0.0;
+  }
+
+  double getProductionRate(String currencyName) {
+    return currencies[currencyName]?.productionRatePerSecond ?? 0.0;
+  }
+}
+
+class UserCurrency {
+  final String currencyName;
+  double amount;
+  double productionRatePerSecond;
+
+  UserCurrency({required this.currencyName, required this.amount, required this.productionRatePerSecond});
+
+  void updateAmount(double newAmount) {
+    amount = newAmount;
+  }
+
+  void updateProductionRate(double newRate) {
+    productionRatePerSecond = newRate;
   }
 }

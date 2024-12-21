@@ -9,6 +9,7 @@ class AssignCardButton extends StatelessWidget {
   final AssignedValue currentValue;
   final int id; // Add id parameter
 
+
   const AssignCardButton({
     super.key,
     required this.text,
@@ -22,6 +23,8 @@ class AssignCardButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButton<AssignedValue>(
       value: currentValue,
+      isDense: true,
+      isExpanded: false,
       style: const TextStyle(color: Colors.black), // Text color for selected item
       underline: Container(), // Remove the default underline
       items: listCoins.map((AssignedValue value) {
@@ -29,7 +32,7 @@ class AssignCardButton extends StatelessWidget {
           value: value,
           child: Container(
             padding:
-               const EdgeInsets.symmetric(vertical: 8.0), // Padding around the text
+               const EdgeInsets.symmetric(vertical: 2.0), // Padding around the text
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(

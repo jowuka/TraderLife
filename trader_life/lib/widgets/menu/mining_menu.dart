@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:device_screen_size/device_screen_size.dart';
-import 'package:trader_life/widgets/graphic_card_item.dart';
+import 'package:trader_life/items/graphic_card_item.dart';
 
 class MiningMenu extends StatelessWidget {
   const MiningMenu({super.key});

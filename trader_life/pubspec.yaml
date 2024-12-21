@@ -36,7 +36,10 @@ dependencies:
   device_screen_size: ^0.0.1
   shared_preferences: ^2.2.3
   google_fonts: ^6.2.0
-  flutter_svg: 2.0.10+1
+  flutter_svg: ^2.0.16
+  provider: ^6.0.0
+  syncfusion_flutter_charts: ^21.2.4  # En son sürümü kontrol edin
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,7 +49,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -63,6 +66,7 @@ flutter:
   assets:
     - assets/images/background.webp
     - assets/images/miningbutton.png
+    - assets/images/leveragebutton.png
     - assets/images/walletbutton.png
     - assets/images/workbutton.png
     - assets/images/buybutton.png
@@ -91,6 +95,7 @@ flutter:
     - assets/images/GraphicCards/Tier6/Tier6_l2.png
     - assets/images/GraphicCards/Tier6/Tier6_l3.png
     - assets/images/GraphicCards/Tier6/Tier6_l4.png
+    - assets/bitcoin_historical_data.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
